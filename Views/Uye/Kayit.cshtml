@@ -1,0 +1,143 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="page_head">Üye Kayıt Formu</h1>        
+<div class="registration_form">
+    <div id="sign_up">
+        <div class="login_content"><p class="note"><span class="indicates">*</span> Zorunlu alanlar</p><p>Üyelik formunu doldurarak üyelerimize özel hizmetlerinden hemen yararlanmaya başlayabilirsiniz.</p></div>
+            <div class="registration_form_box">
+                <form name="registerform" id="registerform" action="/uye/uyekayit" method="post" enctype="multipart/form-data">
+                    <h5 class="rfh">Kişisel Bilgiler</h5>
+                    <div class="form_row clearfix">
+                        <label>EMail<span class="indicates">*</span></label>
+                        <input type="text" name="EMail" id="EMail" class="textfield" value="" size="25" />
+                        <div class="reg_passmail">(Not: Doğrulama kodunuz EMail adresinize gönderilecektir.)</div>
+                        <span class="message_error2 dn" id="EMailError"></span>
+                    </div>
+                    <div class="row_spacer_registration clearfix">
+                    <div class="form_row clearfix">
+                        <label>Adınız<span class="indicates">*</span></label>
+                        <input type="text" name="FirstName" id="FirstName" class="textfield" value="" size="25" />
+                        <span class="message_error2 dn" id="FirstNameError"></span>
+                    </div>
+                    <div class="form_row clearfix">
+                        <label>Soyadınız<span class="indicates">*</span></label>
+                        <input type="text" name="LastName" id="LastName" class="textfield" value="" size="25" />
+                        <span class="message_error2 dn" id="LastNameError"></span>
+                    </div>
+                    <div class="form_row clearfix">
+                        <label>Profil Resmi</label>
+                        <input type="file" name="LogoImage" id="LogoImage" class="textfield" value="" size="25" />
+                        <div class="reg_passmail">(Not: Logo resminiz 150 x 150 boyutuna küçültülecektir.)</div>
+                    </div>
+                </div>
+                <div class="row_spacer_registration clearfix">
+                    <h5>Adres Bilgileri</h5>
+                    <div class="form_row clearfix">
+                        <label>Adres</label>
+                        <input type="text" name="Address" id="Address" class="textfield" value="" size="25" />
+                    </div>
+                    <div class="form_row clearfix">
+                        <label>Telefon 1<span class="indicates">*</span></label>
+                        <input type="text" name="Tel1" id="Tel1" class="textfield" value="" size="25" />
+                        <span class="message_error2 dn" id="Tel1Error"></span>
+                    </div>
+                    <div class="form_row clearfix">
+                        <label>Telefon 2</label>
+                        <input type="text" name="Tel2" id="Tel2" class="textfield" value="" size="25" />
+                    </div>
+                </div>
+                <div class="row_spacer_registration clearfix">
+                    <div class="form_row clearfix">
+                        <label>Şehir</label>
+                        @Html.DropDownList("CityID", HtmlHelpers.CityListForForm(0), new { @class = "select" })
+                    </div>
+                </div>
+                <input type="submit" id="btnSignUp" value="Hemen Kaydol" class="btn_input_highlight btn_spacer" />
+            </form>
+        </div>
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+    document.registerform.EMail.focus();
+
+    $(document).ready(function () {
+        $("#Tel1").mask("(999) 999 99 99");
+        $("#Tel2").mask("(999) 999 99 99");
+
+        $("#FirstName").blur(function () {
+            if ($("#FirstName").val() == "") {
+                $("#FirstNameError").html("Lütfen adınızı giriniz.");
+                $("#FirstNameError").show();
+                $("#FirstName").addClass("error");
+            }
+            else {
+                $("#FirstNameError").html("");
+                $("#FirstNameError").hide();
+                $("#FirstName").removeClass("error");
+            }
+        });
+
+        $("#LastName").blur(function () {
+            if ($("#LastName").val() == "") {
+                $("#LastNameError").html("Lütfen soyadınızı giriniz.");
+                $("#LastNameError").show();
+                $("#LastName").addClass("error");
+            }
+            else {
+                $("#LastNameError").html("");
+                $("#LastNameError").hide();
+                $("#LastName").removeClass("error");
+            }
+        });
+
+        $("#Tel1").blur(function () {
+            if ($("#Tel1").val() == "") {
+                $("#Tel1Error").html("Lütfen telefon numaranızı giriniz.");
+                $("#Tel1Error").show();
+                $("#Tel1").addClass("error");
+            }
+            else {
+                $("#Tel1Error").html("");
+                $("#Tel1Error").hide();
+                $("#Tel1").removeClass("error");
+            }
+        });
+
+        var emailRegex = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+
+        $("#EMail").blur(function () {
+            if ($("#EMail").val() == "" || !emailRegex.test($("#EMail").val())) {
+                $("#EMailError").html("Lütfen geçerli bir EMail adresi giriniz.");
+                $("#EMailError").show();
+                $("#EMail").addClass("error");
+            }
+            else {
+                $.ajax({
+                    url: "/Ajax/EmailVerification",
+                    data: "EMail=" + $("#EMail").val(),
+                    success: function (data) {
+                        if (!data) {
+                            $("#EMailError").html("Bu EMail adresi ile daha önce kayıt oluşturulmuş");
+                            $("#EMailError").show();
+                            $("#EMail").addClass("error");
+                        }
+                        else {
+                            $("#EMailError").html("");
+                            $("#EMailError").hide();
+                            $("#EMail").removeClass("error");
+                        }
+                    }
+                });
+            }
+        });
+
+        $("#btnSignUp").click(function () {
+            if ($("#EMail").val() == "" || $("#FirstName").val() == "" || $("#LastName").val() == "" || $("#Tel1").val() == "") {
+                $.jGrowl("Lütfen EMail adresi, Ad, Soyad ve Telefon numarası bilgilerinizi giriniz");
+                return false;
+            }
+        });
+    });
+</script>

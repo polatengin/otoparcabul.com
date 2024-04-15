@@ -1,0 +1,20 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = null;
+}
+<div class="featuredagent">
+    <div class="widget">
+        <div class="featured_agent">
+            <h3>Son Güncellenen Mağazalar</h3>
+            <ul class="featured_agent_list">
+                @foreach (var Magaza in ViewData["LastModifiedStores"] as List<Member>)
+                {
+                    <li class="clearfix">
+                        <a href="/magaza/@Magaza.UrlName"><img name="store_photo" class="store_photo" id="store_photo1" src="/Content/m/@Magaza.LogoFileName" alt="Oto Parça Bul Mağaza : @Magaza.FirstName @Magaza.LastName" width="40" height="40"></a>
+                        <p><a href="/magaza/@Magaza.UrlName">@Magaza.FirstName @Magaza.LastName</a><br />@Magaza.City.Name</p>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

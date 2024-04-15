@@ -1,0 +1,9 @@
+﻿@{
+    Layout = null;
+}
+<div class="content_block">
+    <div class="product_image"><a href="/magaza/@Model.Member.UrlName"><img src="/Content/m/@Model.Member.LogoFileName" width="75" height="75" alt="" title="" /></a></div>
+    <div class="messagecontent">
+        @Html.Raw(Model.Body)
+    </div>
+</div>

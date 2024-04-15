@@ -1,0 +1,38 @@
+﻿@using www.otoparcabul.com.Models;
+@model Product
+@{
+    Layout = null;
+}
+<div class="content_block">
+    <div class="product_image"><a href="/urun/@Model.ProductCode/@Model.UrlName"><img src="http://www.otoparcabul.com/Content/p/t/@Model.ThumbnailFileName" width="110" height="75" alt="@Model.Title" title="@Model.Title" /></a></div>
+    <div class="content">
+        <h3 class="clearfix">
+            <span class="propertyaddress"><a href="/urun/@Model.ProductCode/@Model.UrlName">@Model.Title @if (!Model.SoldDate.HasValue) { Html.Raw("SATILDI"); }</a></span>
+            @if (Session["Member"] != null && (Session["Member"] as Member).ID == Model.MemberID) {
+            <span class="price" style="margin-left: 10px;"><a href="/Uye/UrunDuzenle/@Model.ID">Düzenle</a></span>
+            <span class="price" style="margin-left: 10px;"><a href="/Uye/UrunSil/@Model.ID">Sil</a></span>
+            <span class="price" style="margin-left: 10px;"><a href="/Uye/UrunSatildi/@Model.ID">Satıldı</a></span>
+            }
+            <span class="price"><b class="sale">Fiyat : </b>@Model.Price TL</span>
+            <span class="price">&nbsp;&middot;&nbsp;</span>
+            <span class="price"><b class="sale">@Model.InStock</b> adet</span>
+        </h3>
+        <p class="propertylistinglinks">
+            <span class="agent"><a href="/kategori/@Model.Category.UrlName" class="emailagent">@Model.Category.Name</a></span>
+            <span class="agent"><a href="/marka/@Model.BrandModel.Brand.UrlName" class="emailagent">@Model.BrandModel.Brand.Name</a> / @Model.BrandModel.Name</span>
+            @if (Model.Member.IsStore)
+            {
+            <span class="satici"><a href="/magaza/@Model.Member.UrlName">@Model.Member.FullName »</a></span>
+            }
+            else
+            {
+            <span class="satici"><a href="/satici/@Model.Member.UrlName">@Model.Member.FullName »</a></span>
+            }	
+            @if (Session["Member"] != null && (Session["Member"] as Member).ID != Model.MemberID) {
+            <span class="basket"><a href="/sepet/@Model.ProductCode" class="addtobasket">Sepete Ekle</a></span>
+            <span class="fav"><a href="/favori/urun/@Model.ProductCode" class="addtofav">Favori Ürünlerime Ekle</a></span>
+            <span class="fav"><a href="/favori/satici/@Model.Member.UrlName" class="addtofav">Favori Satıcılarıma Ekle</a></span>
+            }
+        </p>
+    </div>
+</div>

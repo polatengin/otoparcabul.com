@@ -1,0 +1,146 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <div class="portlet-header ui-widget-header">Satıcı Liste (Son 50)</div>
+    <div class="clearfix"></div>
+    <div class="hastable">
+        <table id="sort-table">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>EMail</th>
+                    <th>Şehir</th>
+                    <th>Üyelik Tarihi</th>
+                    <th>Ürün Adet</th>
+                    <th style="width:132px">İşlemler</th>
+                </tr>
+            </thead>
+                @foreach (var Uye in ViewData["Uyeler"] as List<Member>)
+                {
+            <tr>
+                <td>@Uye.FirstName</td>
+                <td>@Uye.LastName</td>
+                <td>@Uye.EMail</td>
+                <td>@Uye.City.Name</td>
+                <td>@Uye.SignUpDate.ToShortDateString()</td>
+                <td>@Uye.ProductCount</td>
+                <td>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all" title="Üye Sil" href="?Delete=@Uye.ID">
+                        <span class="ui-icon ui-icon-trash"></span>
+                    </a>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all edit" title="Güncelle" rel="Member@(Uye.ID)" member="@Uye.FullName" href="#MemberEdit">
+                        <span class="ui-icon ui-icon-pencil"></span>
+                    </a>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all" title="Mağaza Yap" href="?ConvertToStore=@Uye.ID">
+                        <span class="ui-icon ui-icon-refresh"></span>
+                    </a>
+                </td>
+            </tr>
+                }
+        </table>
+    </div>
+    <div class="clearfix"></div>
+    <div class="dn">
+        <div id="MemberEdit">
+            <form name="registerform" id="registerform" action="/yonetici/satici/kaydet" method="post">
+                <input type="hidden" id="MemberID" name="MemberID" />
+                <div style="float:left;">
+                    <div class="form_row3 clearfix">
+                        <label>Ad</label>
+                        <input type="text" id="FirstName" name="FirstName" class="textfield" size="25" />
+                    </div>
+                    <div class="form_row3 clearfix">
+                        <label>Soyad</label>
+                        <input type="text" id="LastName" name="LastName" class="textfield" size="25" />
+                    </div>
+                    <div class="form_row3 clearfix">
+                        <label>EMail</label>
+                        <input type="text" id="EMail" name="EMail" class="textfield" size="25" />
+                    </div>
+                    <div class="form_row3 clearfix">
+                        <label>Şifre</label>
+                        <input type="text" id="Password" name="Password" class="textfield" size="25" />
+                    </div>
+                    <div class="form_row3 clearfix">
+                        <label>Url</label>
+                        <input type="text" id="UrlName" name="UrlName" class="textfield" size="25" maxlength="37" />
+                    </div>
+                    <div class="form_row3 clearfix">
+                        <input type="checkbox" id="IsActive" name="IsActive" class="checkbox" checked="checked" /> Aktif
+                        <input type="checkbox" id="IsAdmin" name="IsAdmin" class="checkbox" /> Yönetici
+                    </div>
+                    <div class="form_row3 clearfix">
+                        <input type="checkbox" id="IsStore" name="IsStore" class="checkbox" /> Mağaza
+                        <input type="checkbox" id="IsVerified" name="IsVerified" class="checkbox" /> Doğrulanmış
+                    </div>
+                    <div class="form_row3 clearfix">
+                        <label>Doğrulama Kodu</label>
+                        <input type="text" id="VerificationCode" name="VerificationCode" class="textfield" size="25" />
+                    </div>
+                </div>
+                <div style="float:left;margin-left:15px;">
+                    <div class="form_row3 clearfix">
+                        <label>Tel1</label>
+                        <input type="text" id="Tel1" name="Tel1" class="textfield" size="25" />
+                    </div>
+                    <div class="form_row3 clearfix">
+                        <label>Tel2</label>
+                        <input type="text" id="Tel2" name="Tel2" class="textfield" size="25" />
+                    </div>
+                    <div class="form_row3 clearfix">
+                        <label>Adres</label>
+                        <textarea id="Address" name="Address" class="textarea"></textarea>
+                    </div>
+                    <input type="submit" id="SaveMember" value="Kaydet" class="btn_input_highlight btn_spacer3" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#SaveMember").click(function () {
+            $.fancybox.close();
+        });
+
+        $(".edit").each(function () {
+            var link = $(this);
+            link.fancybox({
+                title: "Satıcı : " + link.attr("member"),
+                onStart: function () {
+                    var MemberID = link.attr("rel").replace("Member", "");
+                    $.ajax({
+                        url: '/yonetici/kullanici/detay/' + MemberID,
+                        success: function (data) {
+                            $("#MemberID").val(MemberID);
+                            $("#FirstName").val(data.FirstName);
+                            $("#LastName").val(data.LastName);
+                            $("#EMail").val(data.EMail);
+                            $("#Password").val(data.Password);
+                            $("#UrlName").val(data.UrlName);
+                            if (data.IsStore == "True") {
+                                $("#IsStore").attr("checked", "checked");
+                            }
+                            else {
+                                $("#IsStore").attr("checked", "");
+                            }
+                            if (data.IsVerified == "True") {
+                                $("#IsVerified").attr("checked", "checked");
+                            }
+                            else {
+                                $("#IsVerified").attr("checked", "");
+                            }
+                            $("#VerificationCode").val(data.VerificationCode);
+                            $("#Tel1").val(data.Tel1);
+                            $("#Tel2").val(data.Tel2);
+                            $("#Address").val(data.Address);
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

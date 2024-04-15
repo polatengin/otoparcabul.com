@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+}
+<div class="content_block">
+    <div class="product_image"><a href="/urun/@Model.Product.ProductCode/@Model.Product.UrlName"><img src="/Content/p/t/@Model.Product.ThumbnailFileName" width="110" height="75" alt="@Model.Product.Title" title="@Model.Product.Title" /></a></div>
+    <div class="content">
+        <h3 class="clearfix">
+            <span class="propertyaddress"><a href="/urun/@Model.Product.ProductCode/@Model.Product.UrlName">@Model.Product.Title%></a></span>
+            <span class="removefromcart"><a href="/sepet/sil/@Model.Product.ProductCode">Ürünü Sepet'ten Sil</a></span>
+        </h3>
+        <p class="propertylistinglinks">
+            <span class="agent"><a href="/kategori/@Model.Product.Category.UrlName" class="emailagent">@Model.Product.Category.Name</a></span>
+            <span class="price"><b class="sale">Fiyat : </b>@Model.Product.Price TL x @Model.Unit Adet = @Model.Unit * Model.Product.Price TL</span>
+        </p>
+    </div>
+</div>

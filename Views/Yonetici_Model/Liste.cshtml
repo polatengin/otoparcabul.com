@@ -1,0 +1,78 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    var ModelListe = HttpContext.Current.Application["BrandModels"] as List<BrandModel>;
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <div class="portlet-header ui-widget-header"><a id="YeniModelButon" href="#ModelForm"><span class="ui-icon ui-icon-circle-plus"></span></a>Model Liste</div>
+    <div class="clearfix"></div>
+    <div class="hastable">
+        <table id="sort-table">
+            <thead>
+                <tr>
+                    <th>Model Adı</th>
+                    <th>Marka Adı</th>
+                    <th style="width:132px">İşlemler</th>
+                </tr>
+            </thead>
+            @foreach (var Model in ModelListe)
+            {
+                if (Model.Brand != null)
+                {
+                <tr class="@((Model.IsActive) ? "enabled" : "disabled")">
+                    <td class="CategoryName" id="ModelName@(Model.ID)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Name</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Brand.Name</td>
+                    <td>
+                        <a class="btn_no_text btn ui-state-default ui-corner-all" title="Model Sil" href="?Delete=@Model.ID">
+                            <span class="ui-icon ui-icon-trash"></span>
+                        </a>
+                        <a class="btn_no_text btn ui-state-default ui-corner-all edit" title="Model Güncelle" rel="BrandModel@(Model.ID)" href="#ModelForm">
+                            <span class="ui-icon ui-icon-pencil"></span>
+                        </a>
+                        <a class="btn_no_text btn ui-state-default ui-corner-all" title="Model Erişim Değiştir" rel="BrandModel@(Model.ID)" href="?ToggleBrandModel=@Model.ID">
+                            <span class="ui-icon ui-icon-shuffle"></span>
+                        </a>
+                    </td>
+                </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="clearfix"></div>
+    <div class="dn">
+        <div id="ModelForm">
+            <form name="registerform" id="registerform" action="/yonetici/model/kaydet" method="post">
+                <input type="hidden" id="BrandModelID" name="BrandModelID" />
+                <div class="form_row3 clearfix">
+                    <label>Marka</label>
+                    <select id="BrandID" name="BrandID">@Html.Raw(HtmlHelpers.BrandListForForm())</select>
+                </div>
+                <div class="form_row3 clearfix">
+                    <label>Ad</label>
+                    <input type="text" id="Name" name="Name" class="textfield" size="25" />
+                </div>
+                <input type="submit" id="SaveModel" value="Kaydet" class="btn_input_highlight btn_spacer3" />
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#YeniModelButon").click(function () {
+            $("#BrandModelID").val("0");
+        });
+        $("#YeniModelButon").fancybox();
+
+        $(".edit").each(function () {
+            var link = $(this);
+            link.fancybox({
+                onStart: function () {
+                    var BrandModelID = link.attr("rel").replace("BrandModel", "");
+                    $("#BrandModelID").val(BrandModelID);
+                    $("#BrandID").val($("#BrandID" + BrandModelID).val());
+                    $("#Name").val($("#ModelName" + BrandModelID).html().trim().replace(/&nbsp;/g, ""));
+                }
+            });
+        });
+    });
+</script>

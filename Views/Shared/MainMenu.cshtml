@@ -1,0 +1,75 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = null;
+}
+<div class="menu">
+    <ul id="nav" class="dropdown dropdown-horizontal">
+        <li class="current_page_item"><a href="/" title="Oto Parça Bul Ana Sayfası">Ana Sayfa</a></li>
+        <li class="signup"><a href="/uye/kayit">Üye Ol</a></li>
+        <li><a href="/urun/ara">İlan Ara</a></li>
+        @if (Session["Member"] != null) {
+            <li><a href="/uye/urunlistesi/ekle">İlan Ver</a></li>
+            <li><a href="/favori/urun" title="Favori olarak seçtiklerim">Favorilerim</a></li>
+            <li><a href="/sepet" title="Alış-Veriş Sepetim">Alışveriş Sepetim</a></li>
+        }
+        else {
+            <li><a href="/uye/giris">İlan Ver</a></li>
+            <li><a href="/uye/giris" title="Favori olarak seçtiklerim">Favorilerim</a></li>
+            <li><a href="/uye/giris" title="Alış-Veriş Sepetim">Alışveriş Sepetim</a></li>
+        }
+        <li><a href="/iletisim">İletişim</a></li>
+    </ul>
+    <span class="findproperties" onclick="show_hide_propertysearchoptions();"><a href="javascript:void(0);">Ürün Detaylı Ara</a></span>
+    <ul class="social">
+        <li class="facebook"><a href="http://www.facebook.com/sharer.php?u=@Request.Url.AbsoluteUri&amp;t=@ViewData["Title"]" title="Facebook Paylaş"><img src="/Content/i/facebook.png" width="24" height="24" alt="Facebook Paylaş" /></a></li>
+        <li class="twitter"><a href="http://twitter.com/home?status=<@ViewData["Title"] @Request.Url.AbsoluteUri" title="Twitter Paylaş"><img src="/Content/i/twitter.png" width="24" height="24" alt="Twitter Paylaş" /></a></li>
+    </ul>
+</div>
+<div id="propertysearchoptions" style="display: none;">
+    <div class="search ">
+        <form method="get" id="srch_frm" name="srch_frm" action="/Arama/">
+            <div class="search_form">
+                <h3>Oto Parça Ara</h3>
+                <div class="search_row clearfix">
+                    <label class="for">Durum : </label>
+                    <input name="Durum" id="Durum_Tumu" type="radio" value="1" class="radio" checked="checked" /><span>Tümü</span>
+                    <input name="Durum" id="Durum_Yeni" type="radio" value="2" class="radio" /><span>Yeni</span>
+                    <input name="Durum" id="Durum_Ikinci_El" type="radio" value="3" class="radio" /><span>İkinci El</span>
+                </div>
+                <div class="search_row clearfix">
+                    <label>Şehir : </label>
+                    @Html.DropDownList("Sehir", HtmlHelpers.CityListForSearch(), new { @class = "fl select" })
+                    <label class="spacer">Fiyat : </label>
+                    <select name="Fiyat" id="Fiyat" class="fl select">
+                        <option value="0">Tümü</option>
+                        <option value="10">0 - 50 TL</option>
+                        <option value="20">50 - 150 TL</option>
+                        <option value="30">150 - 250 TL</option>
+                        <option value="40">250 - 500 TL</option>
+                        <option value="50">500 TL'den Çok</option>
+                    </select>
+                </div>
+                <div class="search_row clearfix">
+                    <label>Kategori : </label>
+                    <select id="Kategori" name="Kategori" class="fl select">@Html.Raw(HtmlHelpers.CategoryListForSearch())</select>
+
+                    <label class="spacer">Açıklama : </label>
+                    <input type="text" name="Aciklama" id="Aciklama" class="textfield" value="" />
+                </div>
+                <div class="search_row clearfix">
+                    <label>Marka : </label>
+                    <select id="Marka" name="Marka" class="fl select">@Html.Raw(HtmlHelpers.BrandListForSearch())</select>
+
+                    <div class="b_search_properties b_spacer"><input type="submit" value="Detaylı Ara" /></div>
+                </div>
+            </div>
+            <div class="property_id_search">
+                <h3>Ürün Kod Ara</h3>
+                <label>Ürün Kodu : </label>
+                <input name="UrunKodu" id="UrunKodu" type="text" class="textfield" value="" />
+                <div class="b_search_properties clearfix"><input type="submit" value="Ara" /></div>
+            </div>
+        </form>
+        <div class="searchbottom"></div>
+    </div>
+</div>

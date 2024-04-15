@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        @TempData["AlertMessage"]
+    });
+</script>
+@Html.Partial("DailyChances")
+<div class="mb10 clearfix"></div>
+<div style="text-align: center;">
+    <script type="text/javascript"><!--
+    google_ad_client = "pub-7835461440325391";
+    google_ad_slot = "8576523874";
+    google_ad_width = 468;
+    google_ad_height = 60;
+    //-->
+    </script>
+    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+<div class="mb10 clearfix"></div>
+@Html.Partial("ShowRoomProducts")
+<div class="mb10 clearfix"></div>
+<div style="text-align: center;">
+    <script type="text/javascript"><!--
+    google_ad_client = "pub-7835461440325391";
+    google_ad_slot = "8790996227";
+    google_ad_width = 468;
+    google_ad_height = 60;
+    //-->
+    </script>
+    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+<div class="mb10 clearfix"></div>
+@Html.Partial("ShowStoreMembers")
+<div class="mb10 clearfix"></div>
+@Html.Partial("LastModifiedProducts")
+<div class="clearfix"></div>

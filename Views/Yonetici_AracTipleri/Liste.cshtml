@@ -1,0 +1,70 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    var AracTipleriListe = HttpContext.Current.Application["VehicleTypes"] as List<VehicleType>;
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <div class="portlet-header ui-widget-header"><a id="YeniAracTipiButon" href="#AracTipiForm"><span class="ui-icon ui-icon-circle-plus"></span></a>Araç Tipleri Liste</div>
+    <div class="clearfix"></div>
+    <div class="hastable">
+        <table id="sort-table">
+            <thead>
+                <tr>
+                    <th>Araç Tipi Adı</th>
+                    <th>Araç Tipi Url</th>
+                    <th style="width:132px">İşlemler</th>
+                </tr>
+            </thead>
+            @foreach (var AracTipi in AracTipleriListe)
+            {
+            <tr class="@((AracTipi.IsActive) ? "enabled" : "disabled")">
+                <td class="CategoryName" id="VehicleTypeName@(AracTipi.ID)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@AracTipi.Name</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@AracTipi.UrlName</td>
+                <td>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all" title="Araç Tipi Sil" href="?Delete=@AracTipi.ID">
+                        <span class="ui-icon ui-icon-trash"></span>
+                    </a>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all edit" title="Araç Tipi Güncelle" rel="VehicleType@(AracTipi.ID)" href="#AracTipiForm">
+                        <span class="ui-icon ui-icon-pencil"></span>
+                    </a>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all" title="Araç Tipi Erişim Değiştir" rel="VehicleType@(AracTipi.ID)" href="?ToggleVehicleType=@AracTipi.ID">
+                        <span class="ui-icon ui-icon-shuffle"></span>
+                    </a>
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+    <div class="clearfix"></div>
+    <div class="dn">
+        <div id="AracTipiForm">
+            <form name="registerform" id="registerform" action="/yonetici/aractipleri/kaydet" method="post">
+                <input type="hidden" id="VehicleTypeID" name="VehicleTypeID" />
+                <div class="form_row3 clearfix">
+                    <label>Ad</label>
+                    <input type="text" id="Name" name="Name" class="textfield" size="25" />
+                </div>
+                <input type="submit" id="SaveVehicleType" value="Kaydet" class="btn_input_highlight btn_spacer3" />
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#YeniAracTipiButon").click(function () {
+            $("#VehicleTypeID").val("0");
+        });
+        $("#YeniAracTipiButon").fancybox();
+
+        $(".edit").each(function () {
+            var link = $(this);
+            link.fancybox({
+                onStart: function () {
+                    var VehicleTypeID = link.attr("rel").replace("VehicleType", "");
+                    $("#VehicleTypeID").val(VehicleTypeID);
+                    $("#Name").val($("#VehicleTypeName" + VehicleTypeID).html().trim().replace(/&nbsp;/g, ""));
+                }
+            });
+        });
+    });
+</script>

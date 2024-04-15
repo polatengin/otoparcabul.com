@@ -1,0 +1,44 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <div class="portlet-header ui-widget-header">@ViewData["Tarih"] Tarihli Vitrin Ürünleri</div>
+    <span class="fl" style="margin:4px 13px;">Tarih : <input type="text" id="datepicker" /></span>
+    <script type="text/javascript">
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: '@ViewData["VitrinUrunleriTarih"]' });
+            $.datepicker.setDefaults($.datepicker.regional["tr"]);
+            $("#datepicker").datepicker($.datepicker.regional["tr"]);
+            $("#datepicker").change(function () {
+                location.href = "/yonetici/vitrin-urunleri/" + $(this).val();
+            });
+        });
+    </script>
+    <div class="clearfix"></div>
+    <div class="hastable">
+        <table id="sort-table">
+            <thead>
+                <tr>
+                    <th>Tarih</th>
+                    <th>Ürün Başlığı</th>
+                    <th>Üye AdıSoyadı</th>
+                    <th style="width:132px">İşlemler</th>
+                </tr>
+            </thead>
+            @foreach (var Urun in ViewData["VitrinUrunleri"] as List<ShowRoom>)
+            {
+            <tr>
+                <td>@Urun.Date.ToShortDateString()</td>
+                <td>@Urun.Product.Title</td>
+                <td>@Urun.Product.Member.FirstName @Urun.Product.Member.LastName</td>
+                <td>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Vitrin Ürünlerinden Çıkar" href="?Delete=@Urun.ID">
+                        <span class="ui-icon ui-icon-trash"></span>
+                    </a>
+                </td>
+            </tr>
+                }
+        </table> 
+    </div> 
+</div>

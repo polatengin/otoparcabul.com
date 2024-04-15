@@ -1,0 +1,19 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ul class="tab">
+    <li class="normal">Ürün Listeniz :</li>
+    <li class="current"><a href="/Uye/UrunListesi/StoktaVar">Stokta Var</a></li>
+    <li><a href="/Uye/UrunListesi/StoktaYok">Stokta Yok</a></li>
+    <li><a href="/Uye/UrunListesi/Ekle">Ekle</a></li>
+</ul>
+
+<div class="latestproperties">
+    <ul class="display">
+        @foreach (var Urun in ViewData["ProductList"] as List<Product>)
+        {
+        <li>@Html.Partial("ProductItem", Urun)</li>
+        }	
+    </ul>
+</div>

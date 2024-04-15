@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <h1>Yönetici Seçenekleri</h1>
+    <div class="other">
+        <ul class="dashboard-buttons">
+            <li><a href="/yonetici/satici/liste" class="users" title="Satıcılar">Satıcılar</a></li>
+            <li><a href="/yonetici/magaza/liste" class="shop" title="Mağazalar">Mağazalar</a></li>
+            <li><a href="/yonetici/satici/son50" class="users" title="Son 50 Satıcı">Son 50 Satıcı</a></li>
+            <li><a href="/yonetici/magaza/son50" class="users" title="Son 50 Mağaza">Son 50 Mağaza</a></li>
+            <li><a href="/yonetici/urunler/son50" class="box_content" title="Son 50 Ürün">Son 50 Ürün</a></li>
+
+            <li><a href="/yonetici/kategori/liste" class="category" title="Kategoriler">Kategoriler</a></li>
+            <li><a href="/yonetici/marka/liste" class="category" title="Markalar">Markalar</a></li>
+            <li><a href="/yonetici/urunler" class="box_content" title="Ürünler">Ürünler</a></li>
+            @*<li><a href="/yonetici/email/form" class="mail_compose" title="E-Mail Gönder">E-Mail Gönder</a></li>*@
+        </ul>
+        <div class="clearfix"></div>
+        <ul class="dashboard-buttons">
+            <li><a href="/yonetici/aractipleri/liste" class="category" title="Araç Tipleri">Araç Tipleri</a></li>
+
+            <li><a href="/yonetici/model/liste" class="category" title="Araç Modelleri">Araç Modelleri</a></li>
+
+            <li><a href="/yonetici/gunun-urunleri/@(DateTime.Now.Year)-@(DateTime.Now.Month.ToString().PadLeft(2, '0'))-@(DateTime.Now.Day.ToString().PadLeft(2, '0'))" class="star" title="Günün Ürünleri">Günün Ürünleri</a></li>
+            <li><a href="/yonetici/vitrin-urunleri/@(DateTime.Now.Year)-@(DateTime.Now.Month.ToString().PadLeft(2, '0'))-@(DateTime.Now.Day.ToString().PadLeft(2, '0'))" class="star" title="Vitrin Ürünleri">Vitrin Ürünleri</a></li>
+            <li><a href="/yonetici/vitrin-magazalari/@(DateTime.Now.Year)-@(DateTime.Now.Month.ToString().PadLeft(2, '0'))-@(DateTime.Now.Day.ToString().PadLeft(2, '0'))" class="star" title="Vitrin Mağazaları">Vitrin Mağazaları</a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </div> 
+</div>

@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="contentarea_home">
+    <div id="content" class="content_full">
+        <h1 class="page_head">Şifre Hatırlatma Formu</h1>
+    <div class="registration_form">
+            <div id="sign_up">
+                <div class="login_content"><p>Aşağıdaki formu kullanarak kayıtlı olduğunuz email adresinize şifrenizin gönderilmesini sağlayabilirsiniz.</p></div>
+                <div class="registration_form_box">
+                    <form name="registerform" id="registerform" action="/uye/sifregonder" method="post">
+                        <div class="form_row clearfix">
+                            <label>EMail</label>
+                            <input type="text" name="EMail" id="EMail" class="textfield" value="" size="25" />
+                        </div>
+                        <input type="submit" name="registernow" value="Şifre Gönder" class="btn_input_highlight btn_spacer" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    document.registerform.EMail.focus();
+</script>

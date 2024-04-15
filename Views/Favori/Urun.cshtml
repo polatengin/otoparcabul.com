@@ -1,0 +1,34 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var FavoriteProducts = ViewData["FavoriteProducts"] as List<FavoriteProduct>;
+}
+<ul class="tab">
+    <li class="normal">Favori Listeniz :</li>
+    <li class="current"><a href="/favori/urun">Favori Ürünlerim</a></li>
+    <li><a href="/favori/satici">Favori Satıcılarım</a></li>
+</ul>
+<div class="latestproperties latestproperties_right">
+    <ul class="display">
+        @foreach (var Favori in FavoriteProducts)
+        {
+        <li><img src="/Content/i/i-icon-favorite.png" alt="" title="" class="new" />@Html.Partial("ProductItem", Favori.Product)</li>
+        }	
+    </ul>
+</div>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("a.switch_thumb").toggle(function () {
+            $(this).removeClass("swap");
+            $("ul.display").fadeOut("fast", function () {
+                $(this).fadeIn("fast").addClass("thumb_view");
+            });
+        }, function () {
+            $(this).addClass("swap");
+            $("ul.display").fadeOut("fast", function () {
+                $(this).fadeIn("fast").removeClass("thumb_view");
+            });
+        });
+    });
+</script>

@@ -1,0 +1,13 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = null;
+}
+<h5 id="showroom_title">Oto Parça Bul - Ürün Vitrin</h5>
+<ul class="showroom">
+    @foreach (var Urun in ViewData["ShowRoomProducts"] as List<Product>)
+    {
+    <li>
+        <a href="/urun/@Urun.ProductCode/@Urun.UrlName"><img src="http://www.otoparcabul.com/Content/p/t/@Urun.ThumbnailFileName" width="120" height="80" alt="@Urun.Title" /><p>@Urun.Title</p></a>
+    </li>
+    }	
+</ul>

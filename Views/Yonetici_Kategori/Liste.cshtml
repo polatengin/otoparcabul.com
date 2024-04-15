@@ -1,0 +1,98 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    var KategoriListe = HttpContext.Current.Application["Categories"] as List<Category>;
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <div class="portlet-header ui-widget-header"><a id="YeniKategoriButon" href="#KategoriForm"><span class="ui-icon ui-icon-circle-plus"></span></a>Kategori Liste</div>
+    <div class="clearfix"></div>
+    <div class="hastable">
+        <table id="sort-table">
+            <thead>
+                <tr>
+                    <th>Kategori Adı</th>
+                    <th>Kategori Url</th>
+                    <th>Bağlı Bulunduğu Kategori</th>
+                    <th style="width:132px">İşlemler</th>
+                </tr>
+            </thead>
+            @foreach (var UstKategori in KategoriListe.Where(k => k.ParentCategoryID == 0))
+            {
+            <tr class="@((UstKategori.IsActive) ? "enabled" : "disabled")">
+                <td class="CategoryName" id="CategoryName@(UstKategori.ID)">@UstKategori.Name</td>
+                <td>@UstKategori.UrlName</td>
+                <td><b>Ana Kategori</b></td>
+                <td>
+                    <input type="hidden" id="ParentCategoryID@(UstKategori.ID)" value="0" />
+                    <a class="btn_no_text btn ui-state-default ui-corner-all" title="Kategori Sil" href="?Delete=@UstKategori.ID">
+                        <span class="ui-icon ui-icon-trash"></span>
+                    </a>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all edit" title="Kategori Güncelle" rel="Category(@UstKategori.ID)" href="#KategoriForm">
+                        <span class="ui-icon ui-icon-pencil"></span>
+                    </a>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all" title="Kategori Erişim Değiştir" rel="Category(@UstKategori.ID)" href="?ToggleCategory=@UstKategori.ID">
+                        <span class="ui-icon ui-icon-shuffle"></span>
+                    </a>
+                </td>
+            </tr>
+                    foreach (var AltKategori in KategoriListe.Where(k => k.ParentCategoryID == UstKategori.ID))
+                    {
+            <tr class="@((AltKategori.IsActive) ? "enabled" : "disabled")">
+                <td class="CategoryName" id="CategoryName@(AltKategori.ID)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@AltKategori.Name</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@AltKategori.UrlName</td>
+                <td>@UstKategori.Name</td>
+                <td>
+                    <input type="hidden" id="ParentCategoryID@(AltKategori.ID)" value="@UstKategori.ID" />
+                    <a class="btn_no_text btn ui-state-default ui-corner-all" title="Kategori Sil" href="?Delete=@AltKategori.ID">
+                        <span class="ui-icon ui-icon-trash"></span>
+                    </a>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all edit" title="Kategori Güncelle" rel="Category@(AltKategori.ID)" href="#KategoriForm">
+                        <span class="ui-icon ui-icon-pencil"></span>
+                    </a>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all" title="Kategori Erişim Değiştir" rel="Category@(UstKategori.ID)" href="?ToggleCategory=@AltKategori.ID">
+                        <span class="ui-icon ui-icon-shuffle"></span>
+                    </a>
+                </td>
+            </tr>
+                    }
+                }
+        </table>
+    </div>
+    <div class="clearfix"></div>
+    <div class="dn">
+        <div id="KategoriForm">
+            <form name="registerform" id="registerform" action="/yonetici/kategori/kaydet" method="post">
+                <input type="hidden" id="CategoryID" name="CategoryID" />
+                <div class="form_row3 clearfix">
+                    <label>Üst Kategori</label>
+                    <select id="ParentCategoryID" name="ParentCategoryID">@Html.Raw(HtmlHelpers.ParentCategoryList())</select>
+                </div>
+                <div class="form_row3 clearfix">
+                    <label>Ad</label>
+                    <input type="text" id="Name" name="Name" class="textfield" size="25" />
+                </div>
+                <input type="submit" id="SaveCategory" value="Kaydet" class="btn_input_highlight btn_spacer3" />
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#YeniKategoriButon").click(function () {
+            $("#CategoryID").val("0");
+        });
+        $("#YeniKategoriButon").fancybox();
+
+        $(".edit").each(function () {
+            var link = $(this);
+            link.fancybox({
+                onStart: function () {
+                    var CategoryID = link.attr("rel").replace("Category", "");
+                    $("#CategoryID").val(CategoryID);
+                    $("#ParentCategoryID").val($("#ParentCategoryID" + CategoryID).val());
+                    $("#Name").val($("#CategoryName" + CategoryID).html().trim().replace(/&nbsp;/g, ""));
+                }
+            });
+        });
+    });
+</script>

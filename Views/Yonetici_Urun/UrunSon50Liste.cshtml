@@ -1,0 +1,112 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="hastable">
+    <table id="sort-table">
+        <thead>
+            <tr>
+                <th>Başlık</th>
+                <th>Kategori</th>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>Fiyat</th>
+                <th>Üye AdıSoyadı</th>
+                <th style="width:132px">İşlemler</th>
+            </tr>
+        </thead>
+        @foreach (var Urun in ViewData["Urunler"] as List<Product>)
+            {
+        <tr>
+            <td>@Urun.Title</td>
+            <td>@Urun.Category.Name</td>
+            <td>@Urun.BrandModel.Brand.Name</td>
+            <td>@Urun.BrandModel.Name</td>
+            <td>@Urun.Price</td>
+            <td>@Urun.Member.FullName</td>
+            <td>
+                <a class="btn_no_text btn ui-state-default ui-corner-all" title="Ürünü Sil" href="?Delete=@Urun.ID">
+                    <span class="ui-icon ui-icon-trash"></span>
+                </a>
+                <a class="btn_no_text btn ui-state-default ui-corner-all addtodailychance" title="Günün Ürünlerine Ekle" rel="Product@(Urun.ID)" href="#AddToDailyChance">
+                    <span class="ui-icon ui-icon-heart"></span>
+                </a>
+                <a class="btn_no_text btn ui-state-default ui-corner-all addtoshowroom" title="Vitrin Ürünlerine Ekle" rel="Product@(Urun.ID)" href="#AddToShowRoom">
+                    <span class="ui-icon ui-icon-heart"></span>
+                </a>
+            </td>
+        </tr>
+            }
+    </table> 
+</div>
+<div class="clearfix"></div>
+<div class="dn">
+    <div id="AddToDailyChance">
+        <form name="registerform" id="registerform" action="/yonetici/urun/gunun-urunu" method="post">
+            <input type="hidden" id="ProductID1" name="ProductID" />
+            <div class="form_row3 clearfix">
+                <label>Tarih</label>
+                <input type="text" id="Date1" name="Date" class="textfield datepicker1" size="25" />
+            </div>
+            <input type="submit" id="SaveProduct1" value="Ekle" class="btn_input_highlight btn_spacer3" />
+        </form>
+    </div>
+</div>
+<div class="dn">
+    <div id="AddToShowRoom">
+        <form name="registerform" id="Form1" action="/yonetici/urun/vitrin-urunu" method="post">
+            <input type="hidden" id="ProductID2" name="ProductID" />
+            <div class="form_row3 clearfix">
+                <label>Tarih</label>
+                <input type="text" id="Date2" name="Date" class="textfield datepicker2" size="25" />
+            </div>
+            <input type="submit" id="SaveProduct2" value="Ekle" class="btn_input_highlight btn_spacer3" />
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".datepicker1").datepicker({ dateFormat: 'yy-mm-dd' });
+        $(".datepicker1").datepicker($.datepicker.regional["tr"]);
+
+        $(".datepicker2").datepicker({ dateFormat: 'yy-mm-dd' });
+        $(".datepicker2").datepicker($.datepicker.regional["tr"]);
+
+        $.datepicker.setDefaults($.datepicker.regional["tr"]);
+
+        $(".addtodailychance").each(function () {
+            $(this).fancybox({ cyclic: false, showNavArrows: false });
+        });
+
+        $(".addtoshowroom").each(function () {
+            $(this).fancybox({ cyclic: false, showNavArrows: false });
+        });
+
+        $(".addtodailychance").click(function () {
+            $('#AddToDailyChance #ProductID1').val($(this).attr('rel').replace('Product', ''));
+        });
+
+        $(".addtoshowroom").click(function () {
+            $('#AddToShowRoom #ProductID2').val($(this).attr('rel').replace('Product', ''));
+        });
+
+        $("#BrandID").change(function () {
+            $.ajax({
+                type: "GET",
+                url: "/ajax/markamodellist/" + $(this).val(),
+                dataType: "text/html",
+                success: function (html) { $("#BrandModelID").html(html); }
+            });
+        });
+
+        $("#btnKategoriFiltrele").click(function () {
+            location.href = "/yonetici/urunler?CategoryID=" + $("#CategoryID").val();
+        });
+
+        $("#btnMarkaFiltrele").click(function () {
+            location.href = "/yonetici/urunler?BrandModelID=" + $("#BrandModelID").val();
+        });
+
+        $("#BrandID").change();
+    });
+</script>

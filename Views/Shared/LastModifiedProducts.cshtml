@@ -1,0 +1,11 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = null;
+}
+<h5>Son Güncellenen Ürünler</h5>
+<ul class="display">
+    @foreach (var Urun in ViewData["LastModifiedProducts"] as List<Product>)
+    {
+        <li>@Html.Partial("ProductItem", Urun)</li>
+    }
+</ul>

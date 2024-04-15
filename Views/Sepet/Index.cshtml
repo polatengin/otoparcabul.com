@@ -1,0 +1,37 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var SepetDetay = ViewData["ShoppingCartDetails"] as List<ShoppingCartDetail>;
+        decimal ToplamSepet = 0;	
+}
+<div class="latestproperties latestproperties_right">
+    <h5>Alış-Veriş Sepetim</h5>
+    <ul class="display">
+        @foreach (var Sepet in SepetDetay)
+        {
+            ToplamSepet += (Sepet.Unit * Sepet.Product.Price);
+            <li>@Html.Partial("ShoppingCartItem", Sepet)</li>
+        }	
+    </ul>
+    <div class="infos">
+        <span><strong>Sepet Toplam : </strong>@ToplamSepet TL</span>
+        <span><a href="/">Alış-Veriş'e Devam Et</a></span>
+        <span><a href="/sepet/satin-al">Satın Al</a></span>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("a.switch_thumb").toggle(function () {
+            $(this).removeClass("swap");
+            $("ul.display").fadeOut("fast", function () {
+                $(this).fadeIn("fast").addClass("thumb_view");
+            });
+        }, function () {
+            $(this).addClass("swap");
+            $("ul.display").fadeOut("fast", function () {
+                $(this).fadeIn("fast").removeClass("thumb_view");
+            });
+        });
+    });
+</script>

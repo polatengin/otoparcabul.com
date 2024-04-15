@@ -1,0 +1,50 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <div class="portlet-header ui-widget-header">@ViewData["Tarih"] Tarihli Vitrin Mağazaları</div>
+    <span class="fl" style="margin:4px 13px;">Tarih : <input type="text" id="datepicker" /></span>
+    <script type="text/javascript">
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: '@ViewData["VitrinUrunleriTarih"]' });
+            $.datepicker.setDefaults($.datepicker.regional["tr"]);
+            $("#datepicker").datepicker($.datepicker.regional["tr"]);
+            $("#datepicker").change(function () {
+                location.href = "/yonetici/vitrin-magazalari/" + $(this).val();
+            });
+        });
+    </script>
+    <div class="clearfix"></div>
+    <div class="hastable">
+        <table id="sort-table">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>EMail</th>
+                    <th>Şehir</th>
+                    <th>Üyelik Tarihi</th>
+                    <th>Ürün Adet</th>
+                    <th style="width:136px">İşlemler</th>
+                </tr>
+            </thead>
+            @foreach (var Magaza in ViewData["VitrinMagazalari"] as List<ShowStore>)
+            {
+            <tr>
+                <td>@Magaza.Member.FirstName</td>
+                <td>@Magaza.Member.LastName</td>
+                <td>@Magaza.Member.EMail</td>
+                <td>@Magaza.Member.City.Name</td>
+                <td>@Magaza.Member.SignUpDate.ToShortDateString()</td>
+                <td>@Magaza.Member.ProductCount</td>
+                <td>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Vitrin Mağazalarından Çıkar" href="?Delete=@Magaza.ID">
+                        <span class="ui-icon ui-icon-trash"></span>
+                    </a>
+                </td>
+            </tr>
+                }
+        </table> 
+    </div> 
+</div>

@@ -1,0 +1,35 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Product> Urunler = ViewData["Urunler"] as List<Product>;
+}
+<h5>Arama Sonuçları</h5>
+@if (Urunler.Count == 0)
+    {
+    <span class="no_content clearfix">Arama sonucu görüntülenecek ürün bulunmamaktadır.</span>
+    }
+    else
+    {
+    <ul class="display">
+        @foreach (var Urun in Urunler)
+        {
+        <li>@Html.Partial("ProductItem", Urun)</li>
+        }	
+    </ul>
+    }
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("a.switch_thumb").toggle(function () {
+            $(this).removeClass("swap");
+            $("ul.display").fadeOut("fast", function () {
+                $(this).fadeIn("fast").addClass("thumb_view");
+            });
+        }, function () {
+            $(this).addClass("swap");
+            $("ul.display").fadeOut("fast", function () {
+                $(this).fadeIn("fast").removeClass("thumb_view");
+            });
+        });
+    });
+</script>

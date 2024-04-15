@@ -1,0 +1,23 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = null;
+}
+<h5 id="showroom_title">Oto Parça Bul - Mağaza Vitrin</h5>
+<ul class="showstore">
+    @{
+        string StoreLogoFileName = string.Empty;
+        foreach (var Magaza in ViewData["ShowStoreMembers"] as List<Member>)
+        {
+            StoreLogoFileName = Magaza.LogoFileName;
+            if (string.IsNullOrWhiteSpace(StoreLogoFileName))
+            {
+                StoreLogoFileName = "NoThumbnail.png";
+            }
+        <li>
+            <a href="/magaza/@Magaza.UrlName">
+                <img src="http://www.otoparcabul.com/Content/m/@StoreLogoFileName" width="120" height="80" alt="@Magaza.FullName" /><p>@Magaza.FullName</p>
+            </a>
+        </li>
+        }
+    }
+</ul>

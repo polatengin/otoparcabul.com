@@ -1,0 +1,121 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Member Uye = ViewData["Member"] as Member;
+    if (Uye.IsStore)
+    {
+        <img name="user_photo" class="store_photo" id="user_photo" src="http://www.otoparcabul.com/Content/m/@Uye.LogoFileName" width="100" height="100" alt="@Uye.FullName" />
+    }
+    else
+    {
+        <img name="user_photo" class="store_photo" id="Img1" src="http://www.otoparcabul.com/Content/m/@Uye.LogoFileName" width="150" height="150" alt="@Uye.FullName" />
+    }
+}
+        <div class="agent_biodata">
+            <h1 class="page_head">@Uye.FullName</h1>
+            <p class="propertylistinglinks clearfix">
+                <span class="i_agent_others">Satışta Ürün Adedi : <b>@Uye.ProductCount</b></span>
+                @Uye.Description
+            </p>
+        </div>
+        <div class="clearfix"></div>
+        <p class="propertylistinglinks clearfix">
+            <form id="Form1" action="/uye/adsoyad-guncelle" method="post">
+                @if (Uye.IsStore)
+                {
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Firma Adı</label>
+                    <input type="text" id="FirstName" name="FirstName" class="textfield" value="@Uye.FullName" />
+                    <input type="hidden" id="LastName" name="LastName" class="textfield" />
+                </div>
+                }
+                else
+                {
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Ad</label>
+                    <input type="text" id="FirstName" name="FirstName" class="textfield" value="@Uye.FirstName" />
+                </div>
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Soyad</label>
+                    <input type="text" id="LastName" name="LastName" class="textfield" value="@Uye.LastName" />
+                </div>
+                }
+                <div>
+                    <input type="submit" value="Güncelle" class="btn_input_highlight btn_spacer2" />
+                </div>
+            </form>
+        </p>
+        <div class="clearfix"></div>
+        <p class="propertylistinglinks clearfix">
+            <form id="frmPassword" action="/uye/sifre-guncelle" method="post">
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Eski Şifreniz</label>
+                    <input type="password" id="EskiSifre" name="EskiSifre" class="textfield" />
+                </div>
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Yeni Şifreniz</label>
+                    <input type="password" name="YeniSifre1" class="textfield" />
+                </div>
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Yeni Şifreniz (tekrar)</label>
+                    <input type="password" name="YeniSifre2" class="textfield" />
+                </div>
+                <div>
+                    <input type="submit" value="Güncelle" class="btn_input_highlight btn_spacer2" />
+                </div>
+            </form>
+        </p>
+        <div class="clearfix"></div>
+        <p class="propertylistinglinks clearfix">
+            <form id="frmProfileImage" action="/uye/profil-resim-guncelle" method="post" enctype="multipart/form-data">
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Yeni Profil Resminiz</label>
+                    <input type="file" id="ProfileImage" name="ProfileImage" class="textfield" />
+                </div>
+                <div>
+                    <input type="submit" value="Güncelle" class="btn_input_highlight btn_spacer2" />
+                </div>
+            </form>
+        </p>
+        <div class="clearfix"></div>
+        <p class="propertylistinglinks clearfix">
+            <form id="frmAdres" action="/uye/adres-guncelle" method="post">
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Şehir</label>
+                    @Html.DropDownList("CityID", HtmlHelpers.CityListForForm(Uye.CityID), new { @class = "select" })
+                </div>
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Adres</label>
+                    <textarea name="Address" id="Address" class="textarea">@Uye.Address</textarea>
+                </div>
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Tel 1</label>
+                    <input type="text" id="Tel1" name="Tel1" class="textfield" value="@Uye.Tel1" />
+                </div>
+                <div class="form_row clearfix">
+                    <label class="password_form_label">Tel 2</label>
+                    <input type="text" id="Tel2" name="Tel2" class="textfield" value="@Uye.Tel2" />
+                </div>
+                <div>
+                    <input type="submit" value="Güncelle" class="btn_input_highlight btn_spacer2" />
+                </div>
+            </form>
+        </p>
+        <div class="clearfix"></div>
+    <div class="contentarea_home contentarea_home_right">
+        <div class="latestproperties latestproperties_right">
+            <h5>Satışta Olan Ürünler</h5>
+        <ul class="display">
+                @foreach (var Urun in ViewData["Products"] as List<Product>)
+                {
+                <li>@Html.Partial("ProductItem", Urun)</li>
+                }	
+            </ul>                 
+        </div>
+    </div>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#Tel1").mask("(999) 999 99 99");
+        $("#Tel2").mask("(999) 999 99 99");
+    });
+</script>

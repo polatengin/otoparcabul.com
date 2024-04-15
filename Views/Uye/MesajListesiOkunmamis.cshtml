@@ -1,0 +1,18 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ul class="tab">
+    <li class="normal">Mesaj Listeniz :</li>
+    <li class="current"><a href="/Uye/MesajListesi/Okunmamis">Okunmamış</a></li>
+    <li><a href="/Uye/MesajListesi/Okunmus">Okunmuş</a></li>
+</ul>
+
+<div class="latestproperties">
+    <ul class="display">
+    @foreach (var Mesaj in ViewData["MessageList"] as List<Message>)
+    {
+        <li>@Html.Partial("MessageItem", Mesaj)</li>
+    }	
+    </ul>
+</div>

@@ -1,0 +1,1477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OtoParcaBulModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="OtoParcaBulModelStoreContainer">
+          <EntitySet Name="Brand" EntityType="OtoParcaBulModel.Store.Brand" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BrandModel" EntityType="OtoParcaBulModel.Store.BrandModel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="OtoParcaBulModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="City" EntityType="OtoParcaBulModel.Store.City" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DailyChance" EntityType="OtoParcaBulModel.Store.DailyChance" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FavoriteMember" EntityType="OtoParcaBulModel.Store.FavoriteMember" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FavoriteProduct" EntityType="OtoParcaBulModel.Store.FavoriteProduct" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Log" EntityType="OtoParcaBulModel.Store.Log" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Member" EntityType="OtoParcaBulModel.Store.Member" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Message" EntityType="OtoParcaBulModel.Store.Message" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="OtoParcaBulModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductHit" EntityType="OtoParcaBulModel.Store.ProductHit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductImage" EntityType="OtoParcaBulModel.Store.ProductImage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ShoppingCart" EntityType="OtoParcaBulModel.Store.ShoppingCart" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ShoppingCartDetail" EntityType="OtoParcaBulModel.Store.ShoppingCartDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ShowRoom" EntityType="OtoParcaBulModel.Store.ShowRoom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ShowStore" EntityType="OtoParcaBulModel.Store.ShowStore" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VehicleType" EntityType="OtoParcaBulModel.Store.VehicleType" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Brand_VehicleType" Association="OtoParcaBulModel.Store.FK_Brand_VehicleType">
+            <End Role="VehicleType" EntitySet="VehicleType" />
+            <End Role="Brand" EntitySet="Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrandModel_Brand" Association="OtoParcaBulModel.Store.FK_BrandModel_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="BrandModel" EntitySet="BrandModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyChance_Product" Association="OtoParcaBulModel.Store.FK_DailyChance_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="DailyChance" EntitySet="DailyChance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteMember_Member" Association="OtoParcaBulModel.Store.FK_FavoriteMember_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FavoriteMember" EntitySet="FavoriteMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteMember_Member1" Association="OtoParcaBulModel.Store.FK_FavoriteMember_Member1">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FavoriteMember" EntitySet="FavoriteMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteProduct_Member" Association="OtoParcaBulModel.Store.FK_FavoriteProduct_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteProduct_Product" Association="OtoParcaBulModel.Store.FK_FavoriteProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Member" Association="OtoParcaBulModel.Store.FK_Log_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_City" Association="OtoParcaBulModel.Store.FK_Member_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_ReceiverMember" Association="OtoParcaBulModel.Store.FK_Message_ReceiverMember">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_SenderMember" Association="OtoParcaBulModel.Store.FK_Message_SenderMember">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brand" Association="OtoParcaBulModel.Store.FK_Product_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_BrandModel" Association="OtoParcaBulModel.Store.FK_Product_BrandModel">
+            <End Role="BrandModel" EntitySet="BrandModel" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="OtoParcaBulModel.Store.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Member" Association="OtoParcaBulModel.Store.FK_Product_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_VehicleType" Association="OtoParcaBulModel.Store.FK_Product_VehicleType">
+            <End Role="VehicleType" EntitySet="VehicleType" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductHit_Product" Association="OtoParcaBulModel.Store.FK_ProductHit_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductHit" EntitySet="ProductHit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductImage_Product" Association="OtoParcaBulModel.Store.FK_ProductImage_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductImage" EntitySet="ProductImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCart_Member" Association="OtoParcaBulModel.Store.FK_ShoppingCart_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartDetail_Product" Association="OtoParcaBulModel.Store.FK_ShoppingCartDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ShoppingCartDetail" EntitySet="ShoppingCartDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartDetail_ShoppingCart" Association="OtoParcaBulModel.Store.FK_ShoppingCartDetail_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+            <End Role="ShoppingCartDetail" EntitySet="ShoppingCartDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowRoom_Product" Association="OtoParcaBulModel.Store.FK_ShowRoom_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ShowRoom" EntitySet="ShowRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowStore_Member" Association="OtoParcaBulModel.Store.FK_ShowStore_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="ShowStore" EntitySet="ShowStore" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleTypeID" Type="int" Nullable="false" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ProductCount" Type="int" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="BrandModel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentCategoryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DailyChance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavoriteMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="FavoriteMemberID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavoriteProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="FavoriteProductID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="Subject" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Body" Type="varchar" Nullable="false" />
+          <Property Name="CreatedDate" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="FullName" Type="nvarchar" Nullable="false" MaxLength="201" StoreGeneratedPattern="Computed" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="IsStore" Type="bit" Nullable="false" />
+          <Property Name="EMail" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="IsVerified" Type="bit" Nullable="false" />
+          <Property Name="VerificationCode" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="CityID" Type="tinyint" Nullable="false" />
+          <Property Name="Tel1" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="Tel2" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LogoFileName" Type="varchar" MaxLength="40" />
+          <Property Name="SignUpDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="ProductCount" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="MessageCount" Type="int" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SenderMemberID" Type="int" Nullable="false" />
+          <Property Name="ReceiverMemberID" Type="int" Nullable="false" />
+          <Property Name="Body" Type="varchar" Nullable="false" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="char" Nullable="false" MaxLength="12" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="VehicleTypeID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="BrandModelID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="IsNew" Type="bit" Nullable="false" />
+          <Property Name="CreatedStock" Type="int" Nullable="false" />
+          <Property Name="InStock" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="SoldDate" Type="smalldatetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ThumbnailFileName" Type="varchar" MaxLength="50" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="ProductHit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="HitCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ThumbnailFileName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="MegaFileName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShoppingCartDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ShoppingCartID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Unit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShowRoom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShowStore">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Brand_VehicleType">
+          <End Role="VehicleType" Type="OtoParcaBulModel.Store.VehicleType" Multiplicity="1" />
+          <End Role="Brand" Type="OtoParcaBulModel.Store.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="VehicleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrandModel_Brand">
+          <End Role="Brand" Type="OtoParcaBulModel.Store.Brand" Multiplicity="1" />
+          <End Role="BrandModel" Type="OtoParcaBulModel.Store.BrandModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BrandModel">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyChance_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="1" />
+          <End Role="DailyChance" Type="OtoParcaBulModel.Store.DailyChance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DailyChance">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteMember_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="1" />
+          <End Role="FavoriteMember" Type="OtoParcaBulModel.Store.FavoriteMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteMember">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteMember_Member1">
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="1" />
+          <End Role="FavoriteMember" Type="OtoParcaBulModel.Store.FavoriteMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteMember">
+              <PropertyRef Name="FavoriteMemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteProduct_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="1" />
+          <End Role="FavoriteProduct" Type="OtoParcaBulModel.Store.FavoriteProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteProduct">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteProduct_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="1" />
+          <End Role="FavoriteProduct" Type="OtoParcaBulModel.Store.FavoriteProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteProduct">
+              <PropertyRef Name="FavoriteProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="1" />
+          <End Role="Log" Type="OtoParcaBulModel.Store.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_City">
+          <End Role="City" Type="OtoParcaBulModel.Store.City" Multiplicity="1" />
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_ReceiverMember">
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="1" />
+          <End Role="Message" Type="OtoParcaBulModel.Store.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ReceiverMemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_SenderMember">
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="1" />
+          <End Role="Message" Type="OtoParcaBulModel.Store.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="SenderMemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Brand">
+          <End Role="Brand" Type="OtoParcaBulModel.Store.Brand" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_BrandModel">
+          <End Role="BrandModel" Type="OtoParcaBulModel.Store.BrandModel" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandModel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="OtoParcaBulModel.Store.Category" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_VehicleType">
+          <End Role="VehicleType" Type="OtoParcaBulModel.Store.VehicleType" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="VehicleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductHit_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="1" />
+          <End Role="ProductHit" Type="OtoParcaBulModel.Store.ProductHit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductHit">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductImage_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="1" />
+          <End Role="ProductImage" Type="OtoParcaBulModel.Store.ProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductImage">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCart_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="1" />
+          <End Role="ShoppingCart" Type="OtoParcaBulModel.Store.ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCartDetail_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="1" />
+          <End Role="ShoppingCartDetail" Type="OtoParcaBulModel.Store.ShoppingCartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShoppingCartDetail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCartDetail_ShoppingCart">
+          <End Role="ShoppingCart" Type="OtoParcaBulModel.Store.ShoppingCart" Multiplicity="1" />
+          <End Role="ShoppingCartDetail" Type="OtoParcaBulModel.Store.ShoppingCartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShoppingCartDetail">
+              <PropertyRef Name="ShoppingCartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowRoom_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Store.Product" Multiplicity="1" />
+          <End Role="ShowRoom" Type="OtoParcaBulModel.Store.ShowRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShowRoom">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowStore_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Store.Member" Multiplicity="1" />
+          <End Role="ShowStore" Type="OtoParcaBulModel.Store.ShowStore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShowStore">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="BrandProductCount" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BrandID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MemberMessageCount" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MemberID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MemberProductCount" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MemberID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProductThumbnailImage" ReturnType="varchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OtoParcaBulModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OtoParcaBulEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Brands" EntityType="OtoParcaBulModel.Brand" />
+          <EntitySet Name="BrandModels" EntityType="OtoParcaBulModel.BrandModel" />
+          <EntitySet Name="Categories" EntityType="OtoParcaBulModel.Category" />
+          <EntitySet Name="Cities" EntityType="OtoParcaBulModel.City" />
+          <EntitySet Name="DailyChances" EntityType="OtoParcaBulModel.DailyChance" />
+          <EntitySet Name="FavoriteMembers" EntityType="OtoParcaBulModel.FavoriteMember" />
+          <EntitySet Name="FavoriteProducts" EntityType="OtoParcaBulModel.FavoriteProduct" />
+          <EntitySet Name="Logs" EntityType="OtoParcaBulModel.Log" />
+          <EntitySet Name="Members" EntityType="OtoParcaBulModel.Member" />
+          <EntitySet Name="Messages" EntityType="OtoParcaBulModel.Message" />
+          <EntitySet Name="Products" EntityType="OtoParcaBulModel.Product" />
+          <EntitySet Name="ProductHits" EntityType="OtoParcaBulModel.ProductHit" />
+          <EntitySet Name="ProductImages" EntityType="OtoParcaBulModel.ProductImage" />
+          <EntitySet Name="ShoppingCarts" EntityType="OtoParcaBulModel.ShoppingCart" />
+          <EntitySet Name="ShoppingCartDetails" EntityType="OtoParcaBulModel.ShoppingCartDetail" />
+          <EntitySet Name="ShowRooms" EntityType="OtoParcaBulModel.ShowRoom" />
+          <EntitySet Name="ShowStores" EntityType="OtoParcaBulModel.ShowStore" />
+          <EntitySet Name="VehicleTypes" EntityType="OtoParcaBulModel.VehicleType" />
+          <AssociationSet Name="FK_Brand_VehicleType" Association="OtoParcaBulModel.FK_Brand_VehicleType">
+            <End Role="VehicleType" EntitySet="VehicleTypes" />
+            <End Role="Brand" EntitySet="Brands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrandModel_Brand" Association="OtoParcaBulModel.FK_BrandModel_Brand">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="BrandModel" EntitySet="BrandModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brand" Association="OtoParcaBulModel.FK_Product_Brand">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_BrandModel" Association="OtoParcaBulModel.FK_Product_BrandModel">
+            <End Role="BrandModel" EntitySet="BrandModels" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="OtoParcaBulModel.FK_Product_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_City" Association="OtoParcaBulModel.FK_Member_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyChance_Product" Association="OtoParcaBulModel.FK_DailyChance_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="DailyChance" EntitySet="DailyChances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteMember_Member" Association="OtoParcaBulModel.FK_FavoriteMember_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="FavoriteMember" EntitySet="FavoriteMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteMember_Member1" Association="OtoParcaBulModel.FK_FavoriteMember_Member1">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="FavoriteMember" EntitySet="FavoriteMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteProduct_Member" Association="OtoParcaBulModel.FK_FavoriteProduct_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteProduct_Product" Association="OtoParcaBulModel.FK_FavoriteProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Member" Association="OtoParcaBulModel.FK_Log_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_ReceiverMember" Association="OtoParcaBulModel.FK_Message_ReceiverMember">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_SenderMember" Association="OtoParcaBulModel.FK_Message_SenderMember">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Member" Association="OtoParcaBulModel.FK_Product_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCart_Member" Association="OtoParcaBulModel.FK_ShoppingCart_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowStore_Member" Association="OtoParcaBulModel.FK_ShowStore_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="ShowStore" EntitySet="ShowStores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_VehicleType" Association="OtoParcaBulModel.FK_Product_VehicleType">
+            <End Role="VehicleType" EntitySet="VehicleTypes" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductHit_Product" Association="OtoParcaBulModel.FK_ProductHit_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductHit" EntitySet="ProductHits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductImage_Product" Association="OtoParcaBulModel.FK_ProductImage_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductImage" EntitySet="ProductImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartDetail_Product" Association="OtoParcaBulModel.FK_ShoppingCartDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ShoppingCartDetail" EntitySet="ShoppingCartDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowRoom_Product" Association="OtoParcaBulModel.FK_ShowRoom_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ShowRoom" EntitySet="ShowRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartDetail_ShoppingCart" Association="OtoParcaBulModel.FK_ShoppingCartDetail_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
+            <End Role="ShoppingCartDetail" EntitySet="ShoppingCartDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleTypeID" Type="Int32" Nullable="false" />
+          <Property Name="UrlName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ProductCount" Type="Int32" p1:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="VehicleType" Relationship="OtoParcaBulModel.FK_Brand_VehicleType" FromRole="Brand" ToRole="VehicleType" />
+          <NavigationProperty Name="BrandModels" Relationship="OtoParcaBulModel.FK_BrandModel_Brand" FromRole="Brand" ToRole="BrandModel" />
+          <NavigationProperty Name="Products" Relationship="OtoParcaBulModel.FK_Product_Brand" FromRole="Brand" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="BrandModel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Brand" Relationship="OtoParcaBulModel.FK_BrandModel_Brand" FromRole="BrandModel" ToRole="Brand" />
+          <NavigationProperty Name="Products" Relationship="OtoParcaBulModel.FK_Product_BrandModel" FromRole="BrandModel" ToRole="Product" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UrlName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="OtoParcaBulModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UrlName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Members" Relationship="OtoParcaBulModel.FK_Member_City" FromRole="City" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="DailyChance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="OtoParcaBulModel.FK_DailyChance_Product" FromRole="DailyChance" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="FavoriteMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="FavoriteMemberID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="OtoParcaBulModel.FK_FavoriteMember_Member" FromRole="FavoriteMember" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="OtoParcaBulModel.FK_FavoriteMember_Member1" FromRole="FavoriteMember" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="FavoriteProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="FavoriteProductID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="OtoParcaBulModel.FK_FavoriteProduct_Member" FromRole="FavoriteProduct" ToRole="Member" />
+          <NavigationProperty Name="Product" Relationship="OtoParcaBulModel.FK_FavoriteProduct_Product" FromRole="FavoriteProduct" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Member" Relationship="OtoParcaBulModel.FK_Log_Member" FromRole="Log" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="201" Unicode="true" FixedLength="false" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="UrlName" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="IsStore" Type="Boolean" Nullable="false" />
+          <Property Name="EMail" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="VerificationCode" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="CityID" Type="Byte" Nullable="false" />
+          <Property Name="Tel1" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="Tel2" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LogoFileName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="SignUpDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="ProductCount" Type="Int32" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="MessageCount" Type="Int32" p1:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="City" Relationship="OtoParcaBulModel.FK_Member_City" FromRole="Member" ToRole="City" />
+          <NavigationProperty Name="FavoriteMembers" Relationship="OtoParcaBulModel.FK_FavoriteMember_Member" FromRole="Member" ToRole="FavoriteMember" />
+          <NavigationProperty Name="FavoriteMembers1" Relationship="OtoParcaBulModel.FK_FavoriteMember_Member1" FromRole="Member" ToRole="FavoriteMember" />
+          <NavigationProperty Name="FavoriteProducts" Relationship="OtoParcaBulModel.FK_FavoriteProduct_Member" FromRole="Member" ToRole="FavoriteProduct" />
+          <NavigationProperty Name="Logs" Relationship="OtoParcaBulModel.FK_Log_Member" FromRole="Member" ToRole="Log" />
+          <NavigationProperty Name="Messages" Relationship="OtoParcaBulModel.FK_Message_ReceiverMember" FromRole="Member" ToRole="Message" />
+          <NavigationProperty Name="Messages1" Relationship="OtoParcaBulModel.FK_Message_SenderMember" FromRole="Member" ToRole="Message" />
+          <NavigationProperty Name="Products" Relationship="OtoParcaBulModel.FK_Product_Member" FromRole="Member" ToRole="Product" />
+          <NavigationProperty Name="ShoppingCarts" Relationship="OtoParcaBulModel.FK_ShoppingCart_Member" FromRole="Member" ToRole="ShoppingCart" />
+          <NavigationProperty Name="ShowStores" Relationship="OtoParcaBulModel.FK_ShowStore_Member" FromRole="Member" ToRole="ShowStore" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderMemberID" Type="Int32" Nullable="false" />
+          <Property Name="ReceiverMemberID" Type="Int32" Nullable="false" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="OtoParcaBulModel.FK_Message_ReceiverMember" FromRole="Message" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="OtoParcaBulModel.FK_Message_SenderMember" FromRole="Message" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UrlName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="VehicleTypeID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="BrandModelID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="IsNew" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedStock" Type="Int32" Nullable="false" />
+          <Property Name="InStock" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SoldDate" Type="DateTime" Precision="0" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="ThumbnailFileName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" p1:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Brand" Relationship="OtoParcaBulModel.FK_Product_Brand" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="BrandModel" Relationship="OtoParcaBulModel.FK_Product_BrandModel" FromRole="Product" ToRole="BrandModel" />
+          <NavigationProperty Name="Category" Relationship="OtoParcaBulModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="DailyChances" Relationship="OtoParcaBulModel.FK_DailyChance_Product" FromRole="Product" ToRole="DailyChance" />
+          <NavigationProperty Name="FavoriteProducts" Relationship="OtoParcaBulModel.FK_FavoriteProduct_Product" FromRole="Product" ToRole="FavoriteProduct" />
+          <NavigationProperty Name="Member" Relationship="OtoParcaBulModel.FK_Product_Member" FromRole="Product" ToRole="Member" />
+          <NavigationProperty Name="VehicleType" Relationship="OtoParcaBulModel.FK_Product_VehicleType" FromRole="Product" ToRole="VehicleType" />
+          <NavigationProperty Name="ProductHits" Relationship="OtoParcaBulModel.FK_ProductHit_Product" FromRole="Product" ToRole="ProductHit" />
+          <NavigationProperty Name="ProductImages" Relationship="OtoParcaBulModel.FK_ProductImage_Product" FromRole="Product" ToRole="ProductImage" />
+          <NavigationProperty Name="ShoppingCartDetails" Relationship="OtoParcaBulModel.FK_ShoppingCartDetail_Product" FromRole="Product" ToRole="ShoppingCartDetail" />
+          <NavigationProperty Name="ShowRooms" Relationship="OtoParcaBulModel.FK_ShowRoom_Product" FromRole="Product" ToRole="ShowRoom" />
+        </EntityType>
+        <EntityType Name="ProductHit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="HitCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="OtoParcaBulModel.FK_ProductHit_Product" FromRole="ProductHit" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ThumbnailFileName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MegaFileName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Product" Relationship="OtoParcaBulModel.FK_ProductImage_Product" FromRole="ProductImage" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="OtoParcaBulModel.FK_ShoppingCart_Member" FromRole="ShoppingCart" ToRole="Member" />
+          <NavigationProperty Name="ShoppingCartDetails" Relationship="OtoParcaBulModel.FK_ShoppingCartDetail_ShoppingCart" FromRole="ShoppingCart" ToRole="ShoppingCartDetail" />
+        </EntityType>
+        <EntityType Name="ShoppingCartDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ShoppingCartID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Unit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="OtoParcaBulModel.FK_ShoppingCartDetail_Product" FromRole="ShoppingCartDetail" ToRole="Product" />
+          <NavigationProperty Name="ShoppingCart" Relationship="OtoParcaBulModel.FK_ShoppingCartDetail_ShoppingCart" FromRole="ShoppingCartDetail" ToRole="ShoppingCart" />
+        </EntityType>
+        <EntityType Name="ShowRoom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="OtoParcaBulModel.FK_ShowRoom_Product" FromRole="ShowRoom" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ShowStore">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="OtoParcaBulModel.FK_ShowStore_Member" FromRole="ShowStore" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UrlName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Brands" Relationship="OtoParcaBulModel.FK_Brand_VehicleType" FromRole="VehicleType" ToRole="Brand" />
+          <NavigationProperty Name="Products" Relationship="OtoParcaBulModel.FK_Product_VehicleType" FromRole="VehicleType" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Brand_VehicleType">
+          <End Role="VehicleType" Type="OtoParcaBulModel.VehicleType" Multiplicity="1" />
+          <End Role="Brand" Type="OtoParcaBulModel.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="VehicleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrandModel_Brand">
+          <End Role="Brand" Type="OtoParcaBulModel.Brand" Multiplicity="1" />
+          <End Role="BrandModel" Type="OtoParcaBulModel.BrandModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BrandModel">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Brand">
+          <End Role="Brand" Type="OtoParcaBulModel.Brand" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_BrandModel">
+          <End Role="BrandModel" Type="OtoParcaBulModel.BrandModel" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandModel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="OtoParcaBulModel.Category" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_City">
+          <End Role="City" Type="OtoParcaBulModel.City" Multiplicity="1" />
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyChance_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="1" />
+          <End Role="DailyChance" Type="OtoParcaBulModel.DailyChance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DailyChance">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteMember_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="1" />
+          <End Role="FavoriteMember" Type="OtoParcaBulModel.FavoriteMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteMember">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteMember_Member1">
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="1" />
+          <End Role="FavoriteMember" Type="OtoParcaBulModel.FavoriteMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteMember">
+              <PropertyRef Name="FavoriteMemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteProduct_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="1" />
+          <End Role="FavoriteProduct" Type="OtoParcaBulModel.FavoriteProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteProduct">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteProduct_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="1" />
+          <End Role="FavoriteProduct" Type="OtoParcaBulModel.FavoriteProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteProduct">
+              <PropertyRef Name="FavoriteProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="1" />
+          <End Role="Log" Type="OtoParcaBulModel.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_ReceiverMember">
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="1" />
+          <End Role="Message" Type="OtoParcaBulModel.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ReceiverMemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_SenderMember">
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="1" />
+          <End Role="Message" Type="OtoParcaBulModel.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="SenderMemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCart_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="1" />
+          <End Role="ShoppingCart" Type="OtoParcaBulModel.ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowStore_Member">
+          <End Role="Member" Type="OtoParcaBulModel.Member" Multiplicity="1" />
+          <End Role="ShowStore" Type="OtoParcaBulModel.ShowStore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShowStore">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_VehicleType">
+          <End Role="VehicleType" Type="OtoParcaBulModel.VehicleType" Multiplicity="1" />
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="VehicleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductHit_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="1" />
+          <End Role="ProductHit" Type="OtoParcaBulModel.ProductHit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductHit">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductImage_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="1" />
+          <End Role="ProductImage" Type="OtoParcaBulModel.ProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductImage">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCartDetail_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="1" />
+          <End Role="ShoppingCartDetail" Type="OtoParcaBulModel.ShoppingCartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShoppingCartDetail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowRoom_Product">
+          <End Role="Product" Type="OtoParcaBulModel.Product" Multiplicity="1" />
+          <End Role="ShowRoom" Type="OtoParcaBulModel.ShowRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShowRoom">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCartDetail_ShoppingCart">
+          <End Role="ShoppingCart" Type="OtoParcaBulModel.ShoppingCart" Multiplicity="1" />
+          <End Role="ShoppingCartDetail" Type="OtoParcaBulModel.ShoppingCartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ShoppingCartDetail">
+              <PropertyRef Name="ShoppingCartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OtoParcaBulModelStoreContainer" CdmEntityContainer="OtoParcaBulEntities">
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleTypeID" ColumnName="VehicleTypeID" />
+                <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandModels">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.BrandModel">
+              <MappingFragment StoreEntitySet="BrandModel">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ParentCategoryID" ColumnName="ParentCategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailyChances">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.DailyChance">
+              <MappingFragment StoreEntitySet="DailyChance">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriteMembers">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.FavoriteMember">
+              <MappingFragment StoreEntitySet="FavoriteMember">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="FavoriteMemberID" ColumnName="FavoriteMemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriteProducts">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.FavoriteProduct">
+              <MappingFragment StoreEntitySet="FavoriteProduct">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="FavoriteProductID" ColumnName="FavoriteProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+                <ScalarProperty Name="IsStore" ColumnName="IsStore" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="VerificationCode" ColumnName="VerificationCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Tel1" ColumnName="Tel1" />
+                <ScalarProperty Name="Tel2" ColumnName="Tel2" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LogoFileName" ColumnName="LogoFileName" />
+                <ScalarProperty Name="SignUpDate" ColumnName="SignUpDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+                <ScalarProperty Name="MessageCount" ColumnName="MessageCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SenderMemberID" ColumnName="SenderMemberID" />
+                <ScalarProperty Name="ReceiverMemberID" ColumnName="ReceiverMemberID" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="VehicleTypeID" ColumnName="VehicleTypeID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandModelID" ColumnName="BrandModelID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="CreatedStock" ColumnName="CreatedStock" />
+                <ScalarProperty Name="InStock" ColumnName="InStock" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="SoldDate" ColumnName="SoldDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ThumbnailFileName" ColumnName="ThumbnailFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductHits">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.ProductHit">
+              <MappingFragment StoreEntitySet="ProductHit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="HitCount" ColumnName="HitCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductImages">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.ProductImage">
+              <MappingFragment StoreEntitySet="ProductImage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ThumbnailFileName" ColumnName="ThumbnailFileName" />
+                <ScalarProperty Name="MegaFileName" ColumnName="MegaFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCarts">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.ShoppingCart">
+              <MappingFragment StoreEntitySet="ShoppingCart">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCartDetails">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.ShoppingCartDetail">
+              <MappingFragment StoreEntitySet="ShoppingCartDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ShoppingCartID" ColumnName="ShoppingCartID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShowRooms">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.ShowRoom">
+              <MappingFragment StoreEntitySet="ShowRoom">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShowStores">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.ShowStore">
+              <MappingFragment StoreEntitySet="ShowStore">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleTypes">
+            <EntityTypeMapping TypeName="OtoParcaBulModel.VehicleType">
+              <MappingFragment StoreEntitySet="VehicleType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

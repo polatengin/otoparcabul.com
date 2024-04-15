@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="page_head">Üye Giriş Formu</h1>
+<div class="registration_form">
+    <div id="sign_up">
+        <div class="login_content"><p>Ücretsiz ilan vermek, alışveriş yapmak veya üyeliğinizi düzenlemek için lütfen üye girişi yapınız.</p></div>
+        <div class="registration_form_box">
+            <form name="registerform" id="registerform" action="/uye/uyegiris" method="post">
+                <div class="form_row clearfix">
+                    <label>EMail</label>
+                    <input type="text" name="EMail" id="EMail" class="textfield" value="" size="25" />
+                </div>
+                <div class="form_row clearfix">
+                    <label>Şifre</label>
+                    <input type="password" name="Password" id="Password" class="textfield" value="" size="25" />
+                </div>
+                <input type="submit" id="registernow" name="registernow" value="Giriş" class="btn_input_highlight btn_spacer" />
+                <a href="/uye/kayit">Yeni Kullanıcı? Üye Kayıt</a>
+                |
+                <a href="/uye/sifrehatirlat">Şifremi Unuttum</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    document.registerform.EMail.focus();
+
+    $(document).ready(function () {
+        @TempData["AlertMessage"].ToString()
+        $("#registernow").click(function () {
+            if ($("#EMail").val() == "" || $("#Password").val() == "") {
+                $.jGrowl("Lütfen EMail ve Şifre bilgilerini giriniz");
+                return false;
+            }
+        });
+    });
+</script>

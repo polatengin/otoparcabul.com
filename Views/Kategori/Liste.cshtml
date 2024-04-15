@@ -1,0 +1,22 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="page_head">Kategori Listesi</h1>
+<div id="content">
+    <div class="column_l">
+        <ul>
+        @{
+        var KategoriListe = HttpContext.Current.Application["Categories"] as List<Category>;
+        foreach (var UstKategori in KategoriListe.Where(k => k.IsActive && k.ParentCategoryID == 0))
+        {
+        <li class="page_item l1">@UstKategori.Name</li>
+            foreach (var AltKategori in KategoriListe.Where(k => k.IsActive && k.ParentCategoryID == UstKategori.ID))
+            {
+                <li class="page_item l2"><a href="/kategori/@AltKategori.UrlName" title="@AltKategori.Name">@AltKategori.Name</a></li>
+            }
+        }
+        }
+        </ul>
+    </div>
+</div>

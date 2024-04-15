@@ -1,0 +1,32 @@
+﻿@using www.otoparcabul.com.Models;
+@{
+    Layout = null;
+}
+<div class="featuredproperties">
+    <div id="DailyChances"><div class="featured_strip"><a href="/gunun-firsatlari">Günün Fırsatları</a></div>
+    @{var DailyChances = ViewData["DailyChances"] as List<DailyChance>;}
+    <div id="featured">
+        <ul class="ui-tabs-nav">
+            @foreach (var Firsat in DailyChances)
+            {
+            <li class="ui-tabs-nav-item"><a href="#fragment-@Firsat.ID"><img src="http://www.otoparcabul.com/Content/p/t/@Firsat.Product.ThumbnailFileName" alt="@Firsat.Product.Title" /></a></li>
+            }
+        </ul>
+            @foreach (var Firsat in DailyChances)
+            {
+        <div id="fragment-@Firsat.ID" class="ui-tabs-panel">
+            <a href="/urun/@Firsat.Product.ProductCode/@Firsat.Product.UrlName"><img src="http://www.otoparcabul.com/Content/p/n/@Firsat.Product.ThumbnailFileName" alt="@Firsat.Product.Title" width="510" height="342" /></a>
+            <div class="info">
+                <h2><a href="/urun/@Firsat.Product.ProductCode/@Firsat.Product.UrlName">@Firsat.Product.Title</a></h2>
+                <p>@Firsat.Product.BrandModel.Brand.Name / @Firsat.Product.BrandModel.Name (Son @Firsat.Product.InStock adet)</p>
+            </div>
+        </div>
+            }
+    </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#featured > ul").tabs({ fx: { opacity: "toggle" } }).tabs("rotate", 7500, true);
+    });
+</script>
